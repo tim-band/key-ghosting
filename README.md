@@ -11,4 +11,4 @@ will probably activate some function of your browser.
 ## How to open the `keys.html` file from github
 
 Click "1 release", then "v1.0", then ".zip". Tell your browser to open the zip file, then
-navigate into `key-ghosting-v1.0` and open `keys.html`.
+navigate into `key-ghosting-1.0` and open `keys.html`.
