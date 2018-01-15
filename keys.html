@@ -1,0 +1,62 @@
+<html>
+<head>
+ <title>Key presses</title>
+ <style>
+  input {
+   width: 500px;
+  }
+ </style>
+ <script>
+  'use strict';
+  function translate(key) {
+   if (key === ' ') {
+    return 'Space';
+   }
+   if (key.length === 1) {
+    return key.toUpperCase();
+   }
+   return key;
+  }
+  function keydown(event) {
+   event.preventDefault()
+   var key = translate(event.key);
+   var text = event.target.value;
+   var words = text.split(" ");
+   var i;
+   for (i in words) {
+    var w = words[i];
+    if (w === key) {
+     return false;
+    }
+   }
+   if (text === "") {
+    text = key;
+   } else {
+    text = text + " " + key
+   }
+   event.target.value = text
+   return false;
+  }
+  function keyup(event) {
+   var key = translate(event.key);
+   var text = event.target.value;
+   var words = text.split(" ");
+   var result = [];
+   var i;
+   for (i in words) {
+    var w = words[i];
+    if (w !== "" && w !== key) {
+	 result.push(w);
+	}
+   }
+   event.target.value = result.join(" ");
+   return false;
+  }
+ </script>
+</head>
+<body onload="document.getElementById('input').focus()">
+ <h1>Press some keys!</h1>
+ <p>Ensure JavaScript is enabled and that the focus is in the input box below, then you can test your keys and key combinations.</p>
+ <input id="input" onkeydown="keydown(event)" onkeyup="keyup(event)" />
+</body>
+</html>
